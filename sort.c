@@ -1,4 +1,4 @@
-	/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
@@ -9,7 +9,7 @@
 /*   Updated: 2023/12/15 15:02:32 by sozdamar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+								
 #include "push_swap.h"
 
 void	sort3(t_list **head)
@@ -64,15 +64,15 @@ void	sort4(t_list **a, t_list **b)
 			ra(a);
 	}
 }
-
+//very bad!
 void	sort5(t_list **a, t_list**b)
 {
 	pb(a, b);
 	if (!is_sorted(a))
 		sort4(a, b);
-	pa(a, b);
 	if (node_data(*b, 0) < node_data(*a, 1))
 	{
+		pa(a, b);
 		if (node_data(*a, 0) > node_data(*a, 1))
 			sa(a);
 	}
@@ -84,21 +84,33 @@ void	sort5else(t_list **a, t_list **b)
 {
 	if (node_data(*b, 0) < node_data(*a, 2))
 		{
-			sa(a);
 			ra(a);
+			pa(a, b);
 			sa(a);
 			rra(a);
 		}
 		else
 		{
-			if (node_data(*a, 0) < node_data(*a, 4))
+			if (node_data(*b, 0) < node_data(*a, 3))
 			{
 				rra(a);
-				sa(a);
+				pa(a, b);
 				ra(a);
 				ra(a);
 			}
 			else
+			{
+				pa(a, b);
 				ra(a);
+			}
 	}
+}
+
+void	punk_sort(t_list **a, t_list **b)
+{
+	pb(a, b);
+	pb(a, b);
+	if (node_data(*b, 0) > node_data(*b, 1))
+		sb(b);
+	
 }
