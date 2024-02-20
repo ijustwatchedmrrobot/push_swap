@@ -12,81 +12,72 @@
 
 #include "push_swap.h"
 
-void	free_str(char **str)
+t_stack	*ft_new_node(int num)
 {
-	int	i;
+	t_stack	*new_node;
 
-	i = 0;
-	while (*(str + i))
-		i++;
-	while (i >= 0)
-		free(*(str + i--));
+	new_node = (t_stack *)malloc(sizeof(t_stack));
+	if (!new_node)
+		return (0);
+	new_node->num = num;
+	new_node->next = NULL;
 }
 
-void	push_ft(t_list **top, int content)
+t_stack	*ft_lastnode(t_stack *head)
 {
-	t_list	*temp;
+	t_stack	*temp;
 
-	temp = ft_lstnew((void *)(intptr_t)content);
-	ft_lstadd_back(top, temp);
+	if (!head)
+		return (0);
+	temp = head;
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
 }
 
-void	init_stack(t_list **stack, int ac, char **av)
+t_stack	*ft_last2node(t_stack *head)
 {
-	char	**args;
-	int		i;
+	t_stack	*temp;
+	
+	if (!head)
+		return (0);
+	temp = head;
+	while (temp->next->next)
+		temp = temp->next;
+	return (temp);
+}
 
-	i = 0;
-	if (ac == 2)
-		args = ft_split(av[1], ' ');
+void	ft_backadd(t_stack **head, t_stack *new_node, int *index)
+{
+	if (!head)
+		return ;
+	if (!(*head))
+	{
+		*head = new_node;
+		(*head)->index = *index;
+	}
 	else
 	{
-		i = 1;
-		args = av;
+		(ft_lastnode(*head))->next = new_node;
+		(ft_lastnode(*head)->index) = *index;
 	}
-	while (args[i])
+	(*index)++;
+}
+
+void	ft_index(t_stack **head)
+{
+	int			i;
+	t_stack *temp;
+
+	i = 0;
+	temp = *head;
+	if (!(*head) || !head)
+		return ;
+	while (*head)
 	{
-		push_ft(stack, ft_atoi(args[i]));
+		(*head)->index = i;
 		i++;
+		(*head) = (*head)->next;
 	}
-	if (ac == 2)
-		free_str(args);
-}
-
-int		is_sorted(t_list **head)
-{
-	t_list	*top;
-
-	top = *head;
-	while (top && top->next)
-	{
-		if (top->content > top->next->content)
-			return (0);
-		top = top->next;
-	}
-	return (1);
-}
-
-void	print_stack(t_list *head)
-{
-	t_list	*temp;
-
-	temp = head;
-	while (temp != NULL)
-	{
-		ft_printf("%d\n",(int)(intptr_t)temp->content);
-		temp = temp->next;
-	}
-}
-
-int	node_data(t_list *head, int n)
-{
-	t_list	*temp;
-
-	if (head == NULL)
-		return (-1);
-	temp = head;
-	while (n--)
-		temp = temp->next;
-	return ((int)(intptr_t)temp->content);
+	(*head) = temp;
 }
