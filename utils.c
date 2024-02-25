@@ -12,72 +12,88 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_new_node(int num)
+t_stack	*ft_lstlast(t_stack *lst)
 {
-	t_stack	*new_node;
-
-	new_node = (t_stack *)malloc(sizeof(t_stack));
-	if (!new_node)
-		return (0);
-	new_node->num = num;
-	new_node->next = NULL;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
-t_stack	*ft_lastnode(t_stack *head)
+int	ft_lstsize(t_stack *lst)
 {
-	t_stack	*temp;
+	int	i;
 
-	if (!head)
-		return (0);
-	temp = head;
-	while (temp->next)
-		temp = temp->next;
-	return (temp);
-}
-
-t_stack	*ft_last2node(t_stack *head)
-{
-	t_stack	*temp;
-	
-	if (!head)
-		return (0);
-	temp = head;
-	while (temp->next->next)
-		temp = temp->next;
-	return (temp);
-}
-
-void	ft_backadd(t_stack **head, t_stack *new_node, int *index)
-{
-	if (!head)
-		return ;
-	if (!(*head))
+	i = 0;
+	while (lst)
 	{
-		*head = new_node;
-		(*head)->index = *index;
+		lst = lst->next;
+		i++;
 	}
-	else
-	{
-		(ft_lastnode(*head))->next = new_node;
-		(ft_lastnode(*head)->index) = *index;
-	}
-	(*index)++;
+	return (i);
 }
 
-void	ft_index(t_stack **head)
+int	ft_min(t_stack *lst)
+{
+	int	i;
+
+	i = lst->nbr;
+	while (lst)
+	{
+		if (lst->nbr < i)
+			i = lst->nbr;
+		lst = lst->next;
+	}
+	return (i);
+}
+
+int	ft_max(t_stack *lst)
+{
+	int	i;
+
+	i = lst->nbr;
+	while (lst)
+	{
+		if (lst->nbr > i)
+			i = lst->nbr;
+		lst = lst->next;
+	}
+	return (i);
+}
+
+int	ft_index(t_stack *lst, int nbr)
+{
+	int	i;
+
+	i = 0;
+	while (lst->nbr != nbr)
+	{
+		i++;
+		lst = lst->next;
+	}
+	return (i);
+}
+
+int	find_place(t_stack *lst, int nbr)
 {
 	int			i;
 	t_stack *temp;
 
-	i = 0;
-	temp = *head;
-	if (!(*head) || !head)
-		return ;
-	while (*head)
+	i = 1;
+	if (nbr > lst->nbr && nbr < ft_lstlast(lst)->nbr)
+		i = 0;
+	else if (nbr > ft_max(lst) || nbr < ft_min(lst))
+		i = ft_index(lst, ft_max(lst));
+	else
 	{
-		(*head)->index = i;
-		i++;
-		(*head) = (*head)->next;
+		temp = lst->next;
+		while (lst->nbr < nbr || temp->nbr > nbr)
+		{
+			lst = lst->next;
+			temp = lst->next;
+			i++;
+		}
 	}
-	(*head) = temp;
+	return (i);
 }
