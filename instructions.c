@@ -43,4 +43,29 @@ void	sb(t_stack **b)
 	ft_printf("sb\n");
 }
 
-void	ss()
+int	sa(t_stack **a)
+{
+	if (swap(a) == -1)
+		return (-1);
+	ft_printf("sa\n");
+	return (0);
+}
+
+int	sb(t_stack **b)
+{
+	if (swap(b) == -1)
+		return (-1);
+	ft_printf("sb\n");
+	return (0);
+}
+
+int	ss(t_stack **a, t_stack **b)
+{
+	if ((*!a || !((*a)->next)) || (!*b || !((*b)->next)))
+		return (-1);
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
+	return (0);
+}
+
