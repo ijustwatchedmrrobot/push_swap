@@ -34,9 +34,9 @@ int	case_rrr(t_stack *a, t_stack *b, int nbr)
 
 	i = 0;
 	if (find_place(b, nbr))
-		i = ft_lstsize(b) - find_place(b, nbr);
-	if ((i < ft_lstsize(a) - ft_index(a, nbr)) && ft_index(a, nbr))
-		i = ft_lstsize(a) - ft_index(a, nbr);
+		i = ft_stacksize(b) - find_place(b, nbr);
+	if ((i < ft_stacksize(a) - ft_index(a, nbr)) && ft_index(a, nbr))
+		i = ft_stacksize(a) - ft_index(a, nbr);
 	return (i);
 }
 
@@ -48,7 +48,7 @@ int	case_rarrb(t_stack *a, t_stack *b, int nbr)
 
 	i = 0;
 	if (find_place(b, nbr))
-		i = ft_lstsize(b) - find_place(b, nbr);
+		i = ft_stacksize(b) - find_place(b, nbr);
 	i = ft_index(a, nbr) + i;
 	return (i);
 }
@@ -61,7 +61,7 @@ int	case_rrarb(t_stack *a, t_stack *b, int nbr)
 
 	i = 0;
 	if (find_index(a, nbr))
-		i = ft_lstsize(a) - ft_index(a, nbr);
+		i = ft_stacksize(a) - ft_index(a, nbr);
 	i = find_place(b, nbr) + i;
 	return (i);
 }

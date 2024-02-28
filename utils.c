@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*ft_lstlast(t_stack *lst)
+t_stack	*ft_stacklast(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -21,7 +21,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (lst);
 }
 
-int	ft_lstsize(t_stack *lst)
+int	ft_stacksize(t_stack *lst)
 {
 	int	i;
 
@@ -81,7 +81,7 @@ int	find_place(t_stack *lst, int nbr)
 	t_stack *temp;
 
 	i = 1;
-	if (nbr > lst->nbr && nbr < ft_lstlast(lst)->nbr)
+	if (nbr > lst->nbr && nbr < ft_stacklast(lst)->nbr)
 		i = 0;
 	else if (nbr > ft_max(lst) || nbr < ft_min(lst))
 		i = ft_index(lst, ft_max(lst));
@@ -96,4 +96,19 @@ int	find_place(t_stack *lst, int nbr)
 		}
 	}
 	return (i);
+}
+
+int	is_sorted(t_stack *lst)
+{
+	int	i;
+
+	i = lst->nbr;
+	while (lst)
+	{
+		if (i > lst->nbr)
+			return (0);
+		i = lst->nbr;
+		lst = lst->next;
+	}
+	return (1);
 }

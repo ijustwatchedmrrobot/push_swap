@@ -31,14 +31,23 @@ void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
+void	rotate(t_stack **lst);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	reverse_rotate(t_stack **lst);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
 
 //utils
-t_stack	*ft_lstlast(t_stack *lst);
-int	ft_lstsize(t_stack *lst);
+t_stack	*ft_stacklast(t_stack *lst);
+int	ft_stacksize(t_stack *lst);
 int	ft_min(t_stack *lst);
 int	ft_max(t_stack *lst);
 int	ft_index(t_stack *lst, int nbr);
 int	find_place(t_stack *lst, int nbr);
+int	is_sorted(t_stack *lst);
 
 //cost calculating
 int	case_rr(t_stack *a, t_stack *b, int nbr);

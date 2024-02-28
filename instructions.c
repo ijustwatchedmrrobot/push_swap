@@ -16,8 +16,6 @@ void	swap(t_stack **lst)
 {
 	t_stack	*temp;
 
-	if (!*lst || !((*lst)->next))
-		return ;
 	temp = *lst;
 	*lst = (*lst)->next;
 	temp->next = (*lst)->next;
@@ -26,46 +24,132 @@ void	swap(t_stack **lst)
 
 void	sa(t_stack **a)
 {
+	if (!*a || !((*a)->next))
+		return ;
 	swap(a);
 	ft_printf("sa\n");
 }
 
 void	sb(t_stack **b)
 {
-	t_stack	*temp;
-
 	if (!*b || !((*b)->next))
 		return ;
-	temp = *b;
-	*b = (*b)->next;
-	temp->next = (*b)->next;
-	(*b)->next = temp;
+	swap(b);
 	ft_printf("sb\n");
 }
 
-int	sa(t_stack **a)
-{
-	if (swap(a) == -1)
-		return (-1);
-	ft_printf("sa\n");
-	return (0);
-}
-
-int	sb(t_stack **b)
-{
-	if (swap(b) == -1)
-		return (-1);
-	ft_printf("sb\n");
-	return (0);
-}
-
-int	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b)
 {
 	if ((*!a || !((*a)->next)) || (!*b || !((*b)->next)))
-		return (-1);
+		return ;
 	swap(a);
 	swap(b);
 	ft_printf("ss\n");
-	return (0);
 }
 
+void	pa(t_stack **a, t_stack **b)
+{
+	t_stack	*temp;
+
+	if (!*b)
+		return ;
+	temp = *a;
+	*a = *b;
+	*b = (*b)->next;
+	(*a)->next = temp;
+	ft_printf("pa\n");
+}
+
+void	pb(t_stack **a, t_stack **b)
+{
+	t_stack	**temp;
+
+	if (!*a)
+		return ;
+	temp = *b;
+	*b = *a;
+	*a = (*a)->next;
+	(*b)->next = temp;
+	ft_printf("pb\n");
+}
+
+void	rotate(t_stack **lst)
+{
+	t_stack	*temp;
+
+	temp = *lst;
+	*lst = ft_stacklast(*lst);
+	(*lst)->next = temp;
+	*lst = temp->next;
+	temp->next = NULL;
+}
+
+void	ra(t_stack **a)
+{
+	if (!*a || !(*a)->next)
+		return ;
+	rotate(a);
+	ft_printf("ra\n");
+}
+
+void	rb(t_stack **b)
+{
+	if (!*b || !(*b)->next)
+		return ;
+	rotate(b);
+	ft_printf("rb\n");
+}
+
+void	rr(t_stack **a, t_stack **b)
+{
+	if ((!*a || !(*a)->next) || (!*b || !(*b)->next))
+		return ;
+	rotate(a);
+	rotate(b);
+	ft_printf("rr\n");
+}
+
+void	reverse_rotate(t_stack **lst)
+{
+	t_stack	*top;	
+	t_stack	*bot;
+
+	top = *lst;
+	bot = ft_stacklast(lst);
+	while (top)
+	{
+		if (top->next->next == NULL)
+		{
+			top->next = NULL;
+			break;
+		}
+		top = top->next;
+	}
+	bot->next = *lst;
+	*lst = bot;
+}
+
+void	rra(t_stack **a)
+{
+	if (!*a || !(*a)->next)
+		return ;
+	reverse_rotate(a);
+	ft_printf("rra\n");
+}
+
+void	rrb(t_stack **b)
+{
+	if (!*b || !(*b)->next)
+		return ;
+	reverse_rotate(b);
+	ft_printf("rrb\n");
+}
+
+void	rrr(t_stack **a, t_stack **b)
+{
+	if ((!*a || !(*a)->next) || (!*b || !(*b)->next))
+		return ;
+	reverse_rotate(a);
+	reverse_rotate(b);
+	ft_printf("rrr\n");
+}
