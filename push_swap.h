@@ -24,17 +24,20 @@ typedef struct s_stack
 } t_stack;
 
 //instructions
-
+//swap
 void	swap(t_stack **head);
 void	sa(t_stack **a);
 void	sb(t_stack **b);
 void	ss(t_stack **a, t_stack **b);
+//push
 void	pa(t_stack **a, t_stack **b);
 void	pb(t_stack **a, t_stack **b);
+//rotate
 void	rotate(t_stack **lst);
 void	ra(t_stack **a);
 void	rb(t_stack **b);
 void	rr(t_stack **a, t_stack **b);
+//reverse_rotate
 void	reverse_rotate(t_stack **lst);
 void	rra(t_stack **a);
 void	rrb(t_stack **b);
@@ -46,14 +49,23 @@ int	ft_stacksize(t_stack *lst);
 int	ft_min(t_stack *lst);
 int	ft_max(t_stack *lst);
 int	ft_index(t_stack *lst, int nbr);
-int	find_place(t_stack *lst, int nbr);
+int	find_place_a(t_stack *a, int nbr);
+int	find_place_b(t_stack *b, int nbr);
 int	is_sorted(t_stack *lst);
 
-//cost calculating
-int	case_rr(t_stack *a, t_stack *b, int nbr);
-int	case_rrr(t_stack *a, t_stack *b, int nbr);
-int	case_rarrb(t_stack *a, t_stack *b, int nbr);
-int	case_rrarb(t_stack *a, t_stack *b, int nbr);
-int	rotation_cost(t_stack *a, t_stack *b);
+//cost calculating for pushing to b
+int	case_rr_b(t_stack *a, t_stack *b, int nbr);
+int	case_rrr_b(t_stack *a, t_stack *b, int nbr);
+int	case_rarrb_b(t_stack *a, t_stack *b, int nbr);
+int	case_rrarb_b(t_stack *a, t_stack *b, int nbr);
+int	rotation_cost_b(t_stack *a, t_stack *b);
+
+//cost calculating for pushing to a
+int	case_rr_a(t_stack *a, t_stack *b, int nbr);
+int	case_rrr_a(t_stack *a, t_stack *b, int nbr);
+int	case_rarrb_a(t_stack *a, t_stack *b, int nbr);
+int	case_rrarb_a(t_stack *a, t_stack *b, int nbr);
+int	rotation_cost_a(t_stack *a, t_stack *b);
+
 
 # endif

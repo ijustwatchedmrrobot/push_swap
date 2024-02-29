@@ -11,63 +11,52 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 //those functions are calculating the rotation count
-
-//putting a or b first changes the result
-// (a to b or b to a)
-int	case_rr(t_stack *a, t_stack *b, int nbr)
+int	case_rr_b(t_stack *a, t_stack *b, int nbr)
 {
 	int	i;
 
-	i = find_place(b, nbr);
+	i = find_place_b(b, nbr);
 	if (i < ft_index(a, nbr))
 		i = ft_index(a, nbr);
 	return (i);
 }
-
-
 //size - index = reverse index
-int	case_rrr(t_stack *a, t_stack *b, int nbr)
+int	case_rrr_b(t_stack *a, t_stack *b, int nbr)
 {
 	int	i;
 
 	i = 0;
-	if (find_place(b, nbr))
-		i = ft_stacksize(b) - find_place(b, nbr);
+	if (find_place_b(b, nbr))
+		i = ft_stacksize(b) - find_place_b(b, nbr);
 	if ((i < ft_stacksize(a) - ft_index(a, nbr)) && ft_index(a, nbr))
 		i = ft_stacksize(a) - ft_index(a, nbr);
 	return (i);
 }
 
-//again, putting a or b first changes the result
-//add index of a to reverse index of b
-int	case_rarrb(t_stack *a, t_stack *b, int nbr)
+int	case_rarrb_b(t_stack *a, t_stack *b, int nbr)
 {
 	int	i;
 
 	i = 0;
-	if (find_place(b, nbr))
-		i = ft_stacksize(b) - find_place(b, nbr);
+	if (find_place_b(b, nbr))
+		i = ft_stacksize(b) - find_place_b(b, nbr);
 	i = ft_index(a, nbr) + i;
 	return (i);
 }
-
-
 //add index of b to reverse index of a
-int	case_rrarb(t_stack *a, t_stack *b, int nbr)
+int	case_rrarb_b(t_stack *a, t_stack *b, int nbr)
 {
 	int	i;
 
 	i = 0;
 	if (find_index(a, nbr))
 		i = ft_stacksize(a) - ft_index(a, nbr);
-	i = find_place(b, nbr) + i;
+	i = find_place_b(b, nbr) + i;
 	return (i);
 }
 
-//again, this function will change behavior with replacing a and b
-int	rotation_cost(t_stack *a, t_stack *b)
+int	rotation_cost_b(t_stack *a, t_stack *b)
 {
 	int			i;
 	t_stack *temp;
@@ -76,14 +65,14 @@ int	rotation_cost(t_stack *a, t_stack *b)
 	i = case_rrr(a, b, a->nbr);
 	while (temp)
 	{
-		if (i > case_rr(a, b, temp->nbr))
-			i = case_rr(a, b, temp->nbr);
-		if (i > case_rrr(a, b, temp->nbr))
-			i = case_rrr(a, b, temp->nbr);
-		if (i > case_rarrb(a, b, temp->nbr))
-			i = case_rarrb(a, b, temp->nbr);
-		if (i > case_rrarb(a, b, temp->nbr))
-			i = case_rrarb(a, b, temp->nbr);
+		if (i > case_rr_b(a, b, temp->nbr))
+			i = case_rr_b(a, b, temp->nbr);
+		if (i > case_rrr_b(a, b, temp->nbr))
+			i = case_rrr_b(a, b, temp->nbr);
+		if (i > case_rarrb_b(a, b, temp->nbr))
+			i = case_rarrb_b(a, b, temp->nbr);
+		if (i > case_rrarb_b(a, b, temp->nbr))
+			i = case_rrarb_b(a, b, temp->nbr);
 		temp = temp->next;
 	}
 	return (i);

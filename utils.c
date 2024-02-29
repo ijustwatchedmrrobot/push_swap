@@ -75,23 +75,46 @@ int	ft_index(t_stack *lst, int nbr)
 	return (i);
 }
 
-int	find_place(t_stack *lst, int nbr)
+int	find_place_b(t_stack *b, int nbr)
 {
 	int			i;
 	t_stack *temp;
 
 	i = 1;
-	if (nbr > lst->nbr && nbr < ft_stacklast(lst)->nbr)
+	if (nbr > b->nbr && nbr < ft_stacklast(b)->nbr)
 		i = 0;
-	else if (nbr > ft_max(lst) || nbr < ft_min(lst))
-		i = ft_index(lst, ft_max(lst));
+	else if (nbr > ft_max(b) || nbr < ft_min(b))
+		i = ft_index(b, ft_max(b));
 	else
 	{
-		temp = lst->next;
-		while (lst->nbr < nbr || temp->nbr > nbr)
+		temp = b->next;
+		while (b->nbr < nbr || temp->nbr > nbr)
 		{
-			lst = lst->next;
-			temp = lst->next;
+			b = b->next;
+			temp = b->next;
+			i++;
+		}
+	}
+	return (i);
+}
+
+int	find_place_a(t_stack *a, int nbr)
+{
+	int			i;
+	t_stack	*temp;
+
+	i = 1;
+	if (nbr < a->nbr && nbr > ft_stacklast(a)->nbr)
+		i = 0;
+	else if (nbr > ft_max(a) || nbr < ft_min(a))
+		i = ft_index(a, ft_min(a));
+	else
+	{
+		temp = a->next;
+		while (a->nbr > nbr || temp->nbr < nbr)
+		{
+			a = a->next;
+			temp = a->next;
 			i++;
 		}
 	}
