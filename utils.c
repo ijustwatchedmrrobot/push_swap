@@ -135,3 +135,15 @@ int	is_sorted(t_stack *lst)
 	}
 	return (1);
 }
+
+int	n_data(t_stack *lst, int nbr)
+{
+	t_stack	*temp;
+
+	if (lst == NULL)
+		return (0);
+	temp = lst;
+	while (nbr--)
+		temp = temp->next;
+	return (temp->nbr);
+}

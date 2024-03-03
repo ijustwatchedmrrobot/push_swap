@@ -52,6 +52,7 @@ int	ft_index(t_stack *lst, int nbr);
 int	find_place_a(t_stack *a, int nbr);
 int	find_place_b(t_stack *b, int nbr);
 int	is_sorted(t_stack *lst);
+int	n_data(t_stack *lst, int nbr); //---------------------> wow
 
 //cost calculating for pushing to b
 int	case_rr_b(t_stack *a, t_stack *b, int nbr);
@@ -67,5 +68,24 @@ int	case_rarrb_a(t_stack *a, t_stack *b, int nbr);
 int	case_rrarb_a(t_stack *a, t_stack *b, int nbr);
 int	rotation_cost_a(t_stack *a, t_stack *b);
 
+
+//apply moves -> a
+int	do_rr_a(t_stack **a, t_stack **b, int nbr);
+int	do_rrr_a(t_stack **a, t_stack **b, int nbr);
+int	do_rrarb_a(t_stack **a, t_stack **b, int nbr);
+int	do_rarrb_a(t_stack **a, t_stack **b, int nbr);
+
+//apply moves -> b
+int	do_rr_b(t_stack **a, t_stack **b, int nbr);
+int	do_rrr_b(t_stack **a, t_stack **b, int nbr);
+int	do_rrarb_b(t_stack **a, t_stack **b, int nbr);
+int	do_rarrb_b(t_stack **a, t_stack **b, int nbr);
+
+//sort
+void	sort3(t_stack **a);
+void	sort_b3(t_stack **a, t_stack **b);
+t_stack	*sort_b(t_stack **a);
+t_stack	**sort_a(t_stack **a, t_stack **b);
+void	sort(t_stack **a);
 
 # endif
