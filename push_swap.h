@@ -43,6 +43,8 @@ void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 
+//init
+
 //utils
 t_stack	*ft_stacklast(t_stack *lst);
 int	ft_stacksize(t_stack *lst);
