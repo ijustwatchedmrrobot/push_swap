@@ -14,12 +14,17 @@
 
 void	ft_add_back(t_stack **lst, t_stack *new)
 {
-	if (!lst)
-		return ;
-	if (!*lst)
+	t_stack	*last;
+
+	if (!lst || !new)
+		ft_error();
+	if (*lst == NULL)
 		*lst = new;
 	else
-		(ft_stacklast(*lst))->next = new;
+	{
+		last = ft_stacklast(*lst);
+		last->next = new;
+	}
 }
 
 t_stack	*ft_newstack(int nbr)
@@ -34,13 +39,32 @@ t_stack	*ft_newstack(int nbr)
 	return (new);
 }
 
-void	list_args(char **av, t_stack *lst)
+void	ft_push(t_stack	**top, int nbr)
 {
-	int	i;
+	t_stack	*temp;
 
-	i = 1;
-	while (av[i] != NULL)
+	temp = ft_newstack(nbr);
+	ft_add_back(top, temp);
+}
+
+void	init_stack(t_stack **lst, int ac, char **av)
+{
+	char	**args;
+	int			i;
+
+	i = 0;
+	if (ac == 2)
+		args = ft_split(av[1], ' ');
+	else
 	{
-		
+		i = 1;
+		args = av;
 	}
+	while (args[i])
+	{
+		ft_push(lst, ft_atoi(args[i]));
+		i++;
+	}
+	if (ac == 2)
+		ft_freestr(args);
 }

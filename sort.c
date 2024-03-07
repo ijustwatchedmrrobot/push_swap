@@ -49,13 +49,13 @@ void	sort_b3(t_stack **a, t_stack **b)
 		i = rotation_cost_b(*a, *b);
 		while (i >= 0)
 		{
-			if (i = case_rr_b(*a, *b, temp->nbr))
+			if (i == case_rr_b(*a, *b, temp->nbr))
 				i = do_rr_a(a, b, temp->nbr);
-			else if (i = case_rrr_b(*a, *b, temp->nbr))
+			else if (i == case_rrr_b(*a, *b, temp->nbr))
 				i = do_rrr_a(a, b, temp->nbr);
-			else if (i = case_rrarb_b(*a, *b, temp->nbr))
+			else if (i == case_rrarb_b(*a, *b, temp->nbr))
 				i = do_rrarb_a(a, b, temp->nbr);
-			else if (i = case_rarrb_b(*a, *b, temp->nbr))
+			else if (i == case_rarrb_b(*a, *b, temp->nbr))
 				i = do_rarrb_a(a, b, temp->nbr);
 			else
 				temp = temp->next;
@@ -69,9 +69,9 @@ t_stack	*sort_b(t_stack **a)
 
 	b = NULL;
 	if (ft_stacksize(*a) > 3 && !is_sorted(*a))
-		pb(a, b);
+		pb(a, &b);
 	if (ft_stacksize(*a) > 3 && !is_sorted(*a))
-		pb(a, b);
+		pb(a, &b);
 	if (ft_stacksize(*a) > 3 && !is_sorted(*a))
 		sort_b3(a, &b);
 	if (!is_sorted(*a))
@@ -89,13 +89,13 @@ t_stack	**sort_a(t_stack **a, t_stack **b)
 		i = rotation_cost_a(*a, *b);
 		while (i >= 0)
 		{
-			if (i = case_rr_a(*a, *b, temp->nbr))
+			if (i == case_rr_a(*a, *b, temp->nbr))
 				i = do_rr_b(a, b, temp->nbr);
-			else if (i = case_rrr_a(*a, *b, temp->nbr))
+			else if (i == case_rrr_a(*a, *b, temp->nbr))
 				i = do_rrr_b(a, b, temp->nbr);
-			else if (i = case_rrarb_a(*a, *b, temp->nbr))
+			else if (i == case_rrarb_a(*a, *b, temp->nbr))
 				i = do_rrarb_b(a, b, temp->nbr);
-			else if (i = case_rarrb_a(*a, *b, temp->nbr))
+			else if (i == case_rarrb_a(*a, *b, temp->nbr))
 				i = do_rarrb_b(a, b, temp->nbr);
 			else
 				temp = temp->next;

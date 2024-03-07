@@ -50,7 +50,7 @@ int	case_rrarb_b(t_stack *a, t_stack *b, int nbr)
 	int	i;
 
 	i = 0;
-	if (find_index(a, nbr))
+	if (ft_index(a, nbr))
 		i = ft_stacksize(a) - ft_index(a, nbr);
 	i = find_place_b(b, nbr) + i;
 	return (i);
@@ -62,7 +62,7 @@ int	rotation_cost_b(t_stack *a, t_stack *b)
 	t_stack *temp;
 
 	temp = a;
-	i = case_rrr(a, b, a->nbr);
+	i = case_rrr_b(a, b, a->nbr);
 	while (temp)
 	{
 		if (i > case_rr_b(a, b, temp->nbr))

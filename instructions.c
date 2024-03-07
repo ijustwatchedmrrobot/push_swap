@@ -40,7 +40,7 @@ void	sb(t_stack **b)
 
 void	ss(t_stack **a, t_stack **b)
 {
-	if ((*!a || !((*a)->next)) || (!*b || !((*b)->next)))
+	if ((!*a || !((*a)->next)) || (!*b || !((*b)->next)))
 		return ;
 	swap(a);
 	swap(b);
@@ -62,7 +62,7 @@ void	pa(t_stack **a, t_stack **b)
 
 void	pb(t_stack **a, t_stack **b)
 {
-	t_stack	**temp;
+	t_stack	*temp;
 
 	if (!*a)
 		return ;
@@ -115,7 +115,7 @@ void	reverse_rotate(t_stack **lst)
 	t_stack	*bot;
 
 	top = *lst;
-	bot = ft_stacklast(lst);
+	bot = ft_stacklast(*lst);
 	while (top)
 	{
 		if (top->next->next == NULL)

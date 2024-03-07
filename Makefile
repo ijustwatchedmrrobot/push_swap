@@ -1,5 +1,7 @@
 NAME = push_swap.a
-SRCS = instructions.c utils.c push_swap.c
+SRCS = cost_a.c cost_b.c do_cost.c error.c \
+		init.c instructions.c push_swap.c sort.c \
+		utils.c
 OBJS = ${SRCS:.c=.o}
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Iincludes

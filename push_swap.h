@@ -44,6 +44,10 @@ void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 
 //init
+void	ft_add_back(t_stack **lst, t_stack *new);
+t_stack	*ft_newstack(int nbr);
+void	ft_push(t_stack	**top, int nbr);
+void	init_stack(t_stack **lst, int ac, char **av);
 
 //utils
 t_stack	*ft_stacklast(t_stack *lst);
@@ -89,5 +93,12 @@ void	sort_b3(t_stack **a, t_stack **b);
 t_stack	*sort_b(t_stack **a);
 t_stack	**sort_a(t_stack **a, t_stack **b);
 void	sort(t_stack **a);
+
+//error
+void	ft_error(void);
+void	ft_free(t_stack **lst);
+void	ft_freestr(char **lst);
+int	ft_checkdup(t_stack *lst);
+
 
 # endif
