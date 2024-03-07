@@ -127,7 +127,7 @@ void	sort(t_stack **a)
 			while ((*a)->nbr != ft_min(*a))
 				rra(a);
 		}
-	}	
+	}
 }
 
 //consisder changing b to double pointer!!
