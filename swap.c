@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,19 +12,37 @@
 
 #include "push_swap.h"
 
-int	main(int ac, char **av)
+void	swap(t_stack **lst)
 {
-	t_stack	*a;
+	t_stack	*temp;
 
-	a = NULL;
-	init_stack(&a, ac, av);
-	if (!a || ft_checkdup(a))
-	{
-		ft_free(&a);
-		ft_error();
-	}
-	if (!is_sorted(a))
-		sort(&a);
-	ft_free(&a);
-	return (0);
+	temp = *lst;
+	*lst = (*lst)->next;
+	temp->next = (*lst)->next;
+	(*lst)->next = temp;
+}
+
+void	sa(t_stack **a)
+{
+	if (!*a || !((*a)->next))
+		return ;
+	swap(a);
+	ft_printf("sa\n");
+}
+
+void	sb(t_stack **b)
+{
+	if (!*b || !((*b)->next))
+		return ;
+	swap(b);
+	ft_printf("sb\n");
+}
+
+void	ss(t_stack **a, t_stack **b)
+{
+	if ((!*a || !((*a)->next)) || (!*b || !((*b)->next)))
+		return ;
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -27,10 +27,10 @@ void	ft_free(t_stack **lst)
 	while (*lst)
 	{
 		temp = (*lst)->next;
-		(*lst)->nbr = 0;
 		free(*lst);
 		*lst = temp;
 	}
+	lst = NULL;
 }
 
 void	ft_freestr(char **lst)
@@ -66,3 +66,30 @@ int	ft_checkdup(t_stack *lst)
 	return (0);
 }
 
+int	long_atoi(char *str)
+{
+	long long int	i;
+	int				sign;
+
+	i = 0;
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-')
+	{
+		str++;
+		sign = -1;
+	}
+	else if (*str == '+')
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			ft_error();
+		i = i * 10 + (*str - '0');
+		str++;
+	}
+	if ((sign * i) > 2147483647 || (sign * i) < -2147483648)
+		ft_error();
+	return (sign * i);
+}

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,58 +12,70 @@
 
 #include "push_swap.h"
 
-int	ft_min(t_stack *lst)
+t_stack	*ft_stacklast(t_stack *lst)
 {
-	int	i;
-
-	i = lst->nbr;
-	while (lst)
-	{
-		if (lst->nbr < i)
-			i = lst->nbr;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
 		lst = lst->next;
-	}
-	return (i);
+	return (lst);
 }
 
-int	ft_max(t_stack *lst)
-{
-	int	i;
-
-	i = lst->nbr;
-	while (lst)
-	{
-		if (lst->nbr > i)
-			i = lst->nbr;
-		lst = lst->next;
-	}
-	return (i);
-}
-
-int	ft_index(t_stack *lst, int nbr)
+int	ft_stacksize(t_stack *lst)
 {
 	int	i;
 
 	i = 0;
-	while (lst->nbr != nbr)
+	while (lst)
 	{
-		i++;
 		lst = lst->next;
+		i++;
 	}
 	return (i);
 }
 
-int	is_sorted(t_stack *lst)
+int	find_place_b(t_stack *b, int nbr)
 {
-	int	i;
+	t_stack	*temp;
+	int		i;
 
-	i = lst->nbr;
-	while (lst)
+	i = 1;
+	if (nbr > b->nbr && nbr < ft_stacklast(b)->nbr)
+		i = 0;
+	else if (nbr > ft_max(b) || nbr < ft_min(b))
+		i = ft_index(b, ft_max(b));
+	else
 	{
-		if (i > lst->nbr)
-			return (0);
-		i = lst->nbr;
-		lst = lst->next;
+		temp = b->next;
+		while (b->nbr < nbr || temp->nbr > nbr)
+		{
+			b = b->next;
+			temp = b->next;
+			i++;
+		}
 	}
-	return (1);
+	return (i);
+}
+
+int	find_place_a(t_stack *a, int nbr)
+{
+	t_stack	*temp;
+	int		i;
+
+	i = 1;
+	if (nbr < a->nbr && nbr > ft_stacklast(a)->nbr)
+		i = 0;
+	else if (nbr > ft_max(a) || nbr < ft_min(a))
+		i = ft_index(a, ft_min(a));
+	else
+	{
+		temp = a->next;
+		while (a->nbr > nbr || temp->nbr < nbr)
+		{
+			a = a->next;
+			temp = a->next;
+			i++;
+		}
+	}
+	return (i);
 }

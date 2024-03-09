@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   cost_a.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -58,13 +58,13 @@ int	case_rrarb_a(t_stack *a, t_stack *b, int nbr)
 
 int	rotation_cost_a(t_stack *a, t_stack *b)
 {
-	int			i;
 	t_stack	*temp;
+	int		i;
 
 	temp = b;
 	i = case_rrr_a(a, b, b->nbr);
 	while (temp)
-	{		
+	{
 		if (i > case_rr_a(a, b, temp->nbr))
 			i = case_rr_a(a, b, temp->nbr);
 		if (i > case_rrr_a(a, b, temp->nbr))

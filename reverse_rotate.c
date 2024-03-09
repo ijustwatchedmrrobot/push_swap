@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,103 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	swap(t_stack **lst)
-{
-	t_stack	*temp;
-
-	temp = *lst;
-	*lst = (*lst)->next;
-	temp->next = (*lst)->next;
-	(*lst)->next = temp;
-}
-
-void	sa(t_stack **a)
-{
-	if (!*a || !((*a)->next))
-		return ;
-	swap(a);
-	ft_printf("sa\n");
-}
-
-void	sb(t_stack **b)
-{
-	if (!*b || !((*b)->next))
-		return ;
-	swap(b);
-	ft_printf("sb\n");
-}
-
-void	ss(t_stack **a, t_stack **b)
-{
-	if ((!*a || !((*a)->next)) || (!*b || !((*b)->next)))
-		return ;
-	swap(a);
-	swap(b);
-	ft_printf("ss\n");
-}
-
-void	pa(t_stack **a, t_stack **b)
-{
-	t_stack	*temp;
-
-	if (!*b)
-		return ;
-	temp = *a;
-	*a = *b;
-	*b = (*b)->next;
-	(*a)->next = temp;
-	ft_printf("pa\n");
-}
-
-void	pb(t_stack **a, t_stack **b)
-{
-	t_stack	*temp;
-
-	if (!*a)
-		return ;
-	temp = *b;
-	*b = *a;
-	*a = (*a)->next;
-	(*b)->next = temp;
-	ft_printf("pb\n");
-}
-
-void	rotate(t_stack **lst)
-{
-	t_stack	*temp;
-
-	temp = *lst;
-	*lst = ft_stacklast(*lst);
-	(*lst)->next = temp;
-	*lst = temp->next;
-	temp->next = NULL;
-}
-
-void	ra(t_stack **a)
-{
-	if (!*a || !(*a)->next)
-		return ;
-	rotate(a);
-	ft_printf("ra\n");
-}
-
-void	rb(t_stack **b)
-{
-	if (!*b || !(*b)->next)
-		return ;
-	rotate(b);
-	ft_printf("rb\n");
-}
-
-void	rr(t_stack **a, t_stack **b)
-{
-	if ((!*a || !(*a)->next) || (!*b || !(*b)->next))
-		return ;
-	rotate(a);
-	rotate(b);
-	ft_printf("rr\n");
-}
 
 void	reverse_rotate(t_stack **lst)
 {
@@ -121,7 +24,7 @@ void	reverse_rotate(t_stack **lst)
 		if (top->next->next == NULL)
 		{
 			top->next = NULL;
-			break;
+			break ;
 		}
 		top = top->next;
 	}

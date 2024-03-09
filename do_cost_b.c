@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   do_cost_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,18 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	do_rr_a(t_stack **a, t_stack **b, int nbr)
-{
-	while ((*a)->nbr != nbr && find_place_b(*b, nbr) > 0)
-		rr(a, b);
-	while ((*a)->nbr != nbr)
-		ra(a);
-	while (find_place_b(*b, nbr) > 0)
-		rb(b);
-	pb(a, b);
-	return (-1);
-}
 
 int	do_rr_b(t_stack **a, t_stack **b, int nbr)
 {
@@ -36,37 +24,15 @@ int	do_rr_b(t_stack **a, t_stack **b, int nbr)
 	return (-1);
 }
 
-int	do_rrr_a(t_stack **a, t_stack **b, int nbr)
-{
-	while ((*a)->nbr != nbr && find_place_b(*b, nbr) > 0)
-		rrr(a, b);
-	while ((*a)->nbr != nbr)
-		rra(a);
-	while (find_place_b(*b, nbr) > 0)
-		rrb(b);
-	pb(a, b);
-	return (-1);
-}
-
 int	do_rrr_b(t_stack **a, t_stack **b, int nbr)
 {
-	while ((*b)->nbr != nbr && find_place_a(*a ,nbr) > 0)
+	while ((*b)->nbr != nbr && find_place_a(*a, nbr) > 0)
 		rrr(a, b);
 	while ((*b)->nbr != nbr)
 		rrb(b);
 	while (find_place_a(*a, nbr) > 0)
 		rra(a);
 	pa(a, b);
-	return (-1);
-}
-
-int	do_rrarb_a(t_stack **a, t_stack **b, int nbr)
-{
-	while ((*a)->nbr != nbr)
-		rra(a);
-	while (find_place_b(*b, nbr) > 0)
-		rb(b);
-	pb(a, b);
 	return (-1);
 }
 
@@ -77,22 +43,12 @@ int	do_rrarb_b(t_stack **a, t_stack **b, int nbr)
 	while ((*b)->nbr != nbr)
 		rb(b);
 	pa(a, b);
-	return (-1); 
-}
-
-int	do_rarrb_a(t_stack **a, t_stack **b, int nbr)
-{
-	while ((*a)->nbr != nbr)
-		ra(a);
-	while (find_place_b(*b, nbr) > 0)
-		rrb(b);
-	pb(a, b);
 	return (-1);
 }
 
 int	do_rarrb_b(t_stack **a, t_stack **b, int nbr)
 {
-	while (find_place_a(*a ,nbr) > 0)
+	while (find_place_a(*a, nbr) > 0)
 		ra(a);
 	while ((*b)->nbr != nbr)
 		rrb(b);

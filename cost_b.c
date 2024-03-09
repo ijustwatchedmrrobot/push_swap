@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   cost_b.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-//those functions are calculating the rotation count
+
 int	case_rr_b(t_stack *a, t_stack *b, int nbr)
 {
 	int	i;
@@ -21,7 +21,7 @@ int	case_rr_b(t_stack *a, t_stack *b, int nbr)
 		i = ft_index(a, nbr);
 	return (i);
 }
-//size - index = reverse index
+
 int	case_rrr_b(t_stack *a, t_stack *b, int nbr)
 {
 	int	i;
@@ -44,7 +44,7 @@ int	case_rarrb_b(t_stack *a, t_stack *b, int nbr)
 	i = ft_index(a, nbr) + i;
 	return (i);
 }
-//add index of b to reverse index of a
+
 int	case_rrarb_b(t_stack *a, t_stack *b, int nbr)
 {
 	int	i;
@@ -58,8 +58,8 @@ int	case_rrarb_b(t_stack *a, t_stack *b, int nbr)
 
 int	rotation_cost_b(t_stack *a, t_stack *b)
 {
-	int			i;
-	t_stack *temp;
+	t_stack	*temp;
+	int		i;
 
 	temp = a;
 	i = case_rrr_b(a, b, a->nbr);

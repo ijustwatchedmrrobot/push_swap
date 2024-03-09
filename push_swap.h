@@ -20,8 +20,7 @@ typedef struct s_stack
 {
 	int				nbr;
 	struct s_stack	*next;
-	struct s_stack	*prev;
-} t_stack;
+}	t_stack;
 
 //instructions
 //swap
@@ -51,41 +50,41 @@ void	init_stack(t_stack **lst, int ac, char **av);
 
 //utils
 t_stack	*ft_stacklast(t_stack *lst);
-int	ft_stacksize(t_stack *lst);
-int	ft_min(t_stack *lst);
-int	ft_max(t_stack *lst);
-int	ft_index(t_stack *lst, int nbr);
-int	find_place_a(t_stack *a, int nbr);
-int	find_place_b(t_stack *b, int nbr);
-int	is_sorted(t_stack *lst);
-int	n_data(t_stack *lst, int nbr); //---------------------> wow
+int		ft_stacksize(t_stack *lst);
+int		ft_min(t_stack *lst);
+int		ft_max(t_stack *lst);
+int		ft_index(t_stack *lst, int nbr);
+int		find_place_a(t_stack *a, int nbr);
+int		find_place_b(t_stack *b, int nbr);
+int		is_sorted(t_stack *lst);
+int		ft_checknum(char *num);
+int		long_atoi(char *str);
 
 //cost calculating for pushing to b
-int	case_rr_b(t_stack *a, t_stack *b, int nbr);
-int	case_rrr_b(t_stack *a, t_stack *b, int nbr);
-int	case_rarrb_b(t_stack *a, t_stack *b, int nbr);
-int	case_rrarb_b(t_stack *a, t_stack *b, int nbr);
-int	rotation_cost_b(t_stack *a, t_stack *b);
+int		case_rr_b(t_stack *a, t_stack *b, int nbr);
+int		case_rrr_b(t_stack *a, t_stack *b, int nbr);
+int		case_rarrb_b(t_stack *a, t_stack *b, int nbr);
+int		case_rrarb_b(t_stack *a, t_stack *b, int nbr);
+int		rotation_cost_b(t_stack *a, t_stack *b);
 
 //cost calculating for pushing to a
-int	case_rr_a(t_stack *a, t_stack *b, int nbr);
-int	case_rrr_a(t_stack *a, t_stack *b, int nbr);
-int	case_rarrb_a(t_stack *a, t_stack *b, int nbr);
-int	case_rrarb_a(t_stack *a, t_stack *b, int nbr);
-int	rotation_cost_a(t_stack *a, t_stack *b);
-
+int		case_rr_a(t_stack *a, t_stack *b, int nbr);
+int		case_rrr_a(t_stack *a, t_stack *b, int nbr);
+int		case_rarrb_a(t_stack *a, t_stack *b, int nbr);
+int		case_rrarb_a(t_stack *a, t_stack *b, int nbr);
+int		rotation_cost_a(t_stack *a, t_stack *b);
 
 //apply moves -> a
-int	do_rr_a(t_stack **a, t_stack **b, int nbr);
-int	do_rrr_a(t_stack **a, t_stack **b, int nbr);
-int	do_rrarb_a(t_stack **a, t_stack **b, int nbr);
-int	do_rarrb_a(t_stack **a, t_stack **b, int nbr);
+int		do_rr_a(t_stack **a, t_stack **b, int nbr);
+int		do_rrr_a(t_stack **a, t_stack **b, int nbr);
+int		do_rrarb_a(t_stack **a, t_stack **b, int nbr);
+int		do_rarrb_a(t_stack **a, t_stack **b, int nbr);
 
 //apply moves -> b
-int	do_rr_b(t_stack **a, t_stack **b, int nbr);
-int	do_rrr_b(t_stack **a, t_stack **b, int nbr);
-int	do_rrarb_b(t_stack **a, t_stack **b, int nbr);
-int	do_rarrb_b(t_stack **a, t_stack **b, int nbr);
+int		do_rr_b(t_stack **a, t_stack **b, int nbr);
+int		do_rrr_b(t_stack **a, t_stack **b, int nbr);
+int		do_rrarb_b(t_stack **a, t_stack **b, int nbr);
+int		do_rarrb_b(t_stack **a, t_stack **b, int nbr);
 
 //sort
 void	sort3(t_stack **a);
@@ -98,7 +97,6 @@ void	sort(t_stack **a);
 void	ft_error(void);
 void	ft_free(t_stack **lst);
 void	ft_freestr(char **lst);
-int	ft_checkdup(t_stack *lst);
+int		ft_checkdup(t_stack *lst);
 
-
-# endif
+#endif

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   sort.c     		                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sozdamar <sozdamar@student.42istanbul.com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -14,34 +14,30 @@
 
 void	sort3(t_stack **a)
 {
-	if (n_data(*a, 2) > n_data(*a, 1))
+	if (ft_min(*a) == (*a)->nbr)
 	{
-		if (n_data(*a, 2) > n_data(*a, 0))
-			sa(a);
-		else
-			ra(a);
+		rra(a);
+		sa(a);
 	}
-	else if (n_data(*a, 1) > n_data(*a, 0))
+	else if (ft_max(*a) == (*a)->nbr)
 	{
-		if (n_data(*a, 2) > n_data(*a, 0))
-		{
-			rra(a);
+		ra(a);
+		if (!is_sorted(*a))
 			sa(a);
-		}
-		else
-			rra(a);
 	}
 	else
 	{
-		ra(a);
-		sa(a);
+		if (ft_index(*a, ft_max(*a)) == 1)
+			rra(a);
+		else
+			sa(a);
 	}
 }
 
 void	sort_b3(t_stack **a, t_stack **b)
 {
-	int			i;
 	t_stack	*temp;
+	int		i;
 
 	while (ft_stacksize(*a) > 3 && !is_sorted(*a))
 	{
@@ -81,8 +77,9 @@ t_stack	*sort_b(t_stack **a)
 
 t_stack	**sort_a(t_stack **a, t_stack **b)
 {
-	int			i;
 	t_stack	*temp;
+	int		i;
+
 	while (*b)
 	{
 		temp = *b;
@@ -129,5 +126,3 @@ void	sort(t_stack **a)
 		}
 	}
 }
-
-//consisder changing b to double pointer!!
