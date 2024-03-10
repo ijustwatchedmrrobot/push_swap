@@ -1,4 +1,4 @@
-NAME = push_swap.a
+NAME = push_swap
 SRCS = cost_a.c cost_b.c do_cost_a.c do_cost_b.c \
 		error.c init.c sort.c push_swap.c \
 		utils.c stack_utils.c swap.c push.c \
@@ -8,23 +8,19 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
-all: $(NAME)
+all: ${NAME} 
+${NAME}: ${OBJS}
+	@${MAKE} -C ./libft
+	@${MAKE} -C ./ft_printf
+	@${CC} ${CFLAGS} ${OBJS} ./libft/libft.a ./ft_printf/ft_printf.a -o ${NAME}
 
-$(NAME): $(OBJS)
-	$(MAKE) -C ./libft
-	$(MAKE) -C ./ft_printf
-	$(CC) $(CFLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJS)
-
-clean:
-	$(MAKE) -C ./libft clean
-	$(MAKE) -C ./ft_printf clean
-	$(RM) $(OBJS)
+clean: 
+	@${MAKE} -C ./libft fclean
+	@${MAKE} -C ./ft_printf fclean
+	@${RM} *.o
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) -C ./libft fclean
-	$(MAKE) -C ./ft_printf fclean
+	@${RM} ${NAME}
 
 re: fclean all
 
