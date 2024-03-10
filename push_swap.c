@@ -17,14 +17,17 @@ int	main(int ac, char **av)
 	t_stack	*a;
 
 	a = NULL;
-	init_stack(&a, ac, av);
-	if (!a || ft_checkdup(a))
+	if (ac > 1)
 	{
+		init_stack(&a, ac, av);
+		if (!a || ft_checkdup(a))
+		{
+			ft_free(&a);
+			ft_error();
+		}
+		if (!is_sorted(a))
+			sort(&a);
 		ft_free(&a);
-		ft_error();
 	}
-	if (!is_sorted(a))
-		sort(&a);
-	ft_free(&a);
 	return (0);
 }
