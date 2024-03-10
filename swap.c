@@ -27,7 +27,7 @@ void	sa(t_stack **a)
 	if (!*a || !((*a)->next))
 		return ;
 	swap(a);
-	ft_printf("sa\n");
+	write(1, "sa\n", 3);
 }
 
 void	sb(t_stack **b)
@@ -35,7 +35,7 @@ void	sb(t_stack **b)
 	if (!*b || !((*b)->next))
 		return ;
 	swap(b);
-	ft_printf("sb\n");
+	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **a, t_stack **b)
@@ -44,5 +44,5 @@ void	ss(t_stack **a, t_stack **b)
 		return ;
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	write(1, "ss\n", 3);
 }

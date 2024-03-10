@@ -37,7 +37,7 @@ void	rra(t_stack **a)
 	if (!*a || !(*a)->next)
 		return ;
 	reverse_rotate(a);
-	ft_printf("rra\n");
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **b)
@@ -45,7 +45,7 @@ void	rrb(t_stack **b)
 	if (!*b || !(*b)->next)
 		return ;
 	reverse_rotate(b);
-	ft_printf("rrb\n");
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)
@@ -54,5 +54,5 @@ void	rrr(t_stack **a, t_stack **b)
 		return ;
 	reverse_rotate(a);
 	reverse_rotate(b);
-	ft_printf("rrr\n");
+	write(1, "rrr\n", 4);
 }
